@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
  Title: AiBolit plugin.
- Version: 1.3.2 (16/oct/2015)
+ Version: 1.3.9 (16/oct/2015)
  Author: Denis.
  License: GPL.
  Site: http://prokaryotes.ru
 -->
 <mgrdata>
-    <plugin name="aibolit" version="1.3.2">
+    <plugin name="aibolit" version="1.3.9">
         <name lang="en">AIBolit</name>
         <description lang="en">AI-Bolit - Free Server-Side Malware Scanner</description>
-        <version>1.3.2</version>
+        <version>1.3.9</version>
         <author name="Denis Vorobev / Web-Shop-Hosting" contacts="i@prokaryotes.ru">Denis Vorobev / Web-Shop-Hosting</author>
         <contact>i@prokaryotes.ru</contact>
         <url>http://prokaryotes.ru/plugins/aibloit.tar.gz</url>
@@ -35,9 +35,9 @@
         </node>
     </mainmenu>
     <metadata name="aibolit.stat" type="form">
-        <form maxwidth="yes">
+        <form maxwidth="yes" nocancel="yes">
             <field name="aibolit_stat" fullwidth="yes">
-                <htmldata name="aibolit_stat" height="550"/>
+                <htmldata name="aibolit_stat" height="500"/>
             </field>
         </form>
     </metadata>
@@ -57,6 +57,10 @@
         </toolbar>
     </metadata>
     <lang name="en">
+        <messages name="alert">
+            <msg name="aialert">Доступен новый отчет от антивируса. Нажмите "Подробнее" для просмотра.</msg>
+            <msg name="aiprogress">Запущена проверка сайта __param__.</msg>
+        </messages>
         <messages name="aibolit.result">
             <msg name="title">Сканер AI-Bolit</msg>
             <msg name="aistat">Статистика</msg>
