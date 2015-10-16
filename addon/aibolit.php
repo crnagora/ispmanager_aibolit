@@ -27,9 +27,12 @@ switch ($func) {
     case "aibolit.list";
         break;
     case "aibolit.delete";
-        if (!check_owner($user, $elid))
-            break;
-        unlink(PLUGIN_PATH . $elid . ".html");
+        $list_elid = explode(",", $elid);
+        foreach ($list_elid AS $row) {
+            if (!check_owner($user, trim($row)))
+                break;
+            unlink(PLUGIN_PATH . trim($row) . ".html");
+        }
         $doc->addChild("redirect", "alert('Статистика удалена, вы можете запустить новую проверку'); setTimeout(\"document.location='/ispmgr?func=wwwdomain'\", 100);");
         break;
     case "aibolit.result";
@@ -52,8 +55,9 @@ switch ($func) {
         }
         break;
     case "aibolit.stat";
-        if (!$elid) {
-            $doc->addChild("redirect", "setTimeout(\"document.location='/ispmgr?func=wwwdomain'\", 100);");
+        //закрываем окно по кнопке
+        if ($sok == "ok") {
+            $doc->addChild("ok", "ok");
             break;
         }
         if (!check_owner($user, $elid))
@@ -80,7 +84,9 @@ switch ($func) {
                 }
             }
             $task = "php " . PLUGIN_PATH . "ai-bolit.php --path=\"" . $user_path . "\"  --report=\"" . PLUGIN_PATH . $elid . ".html\" --skip=\"jpg,png,gif,jpeg,bmp,xml,pdf,doc,docx,xls,xlsx,ppt,pptx,css,psd,tar,gz,zip,rar,mp3\"\n";
+            $task.="/usr/local/ispmgr/sbin/mgrctl banner.new elid=aialert status=2 infotype=func info=aibolit.result  su=" . $user;
             file_put_contents(PLUGIN_PATH . $elid . '.lock', $task);
+            exec("/usr/local/ispmgr/sbin/mgrctl banner.new elid=aiprogress status=3 param=" . $elid . " su=" . $user);
             $doc->addChild("redirect", "alert('Антивирусная проверка запущена, результаты будут доступны после окончательной проверки'); setTimeout(\"document.location='/ispmgr?func=wwwdomain'\", 100);");
         }
         break;
