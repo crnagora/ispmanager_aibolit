@@ -3,6 +3,7 @@
 error_reporting(0);
 ini_set('display_errors', 0);
 define("PLUGIN_PATH", "/usr/local/ispmgr/var/.plugin_aibolit/");
+define("AIBOLIT_EXCLUDE", "jpg,png,gif,jpeg,bmp,xml,pdf,doc,docx,xls,xlsx,ppt,pptx,css,psd,tar,gz,zip,rar,mp3");
 $xml_string = file_get_contents("php://stdin");
 $doc = simplexml_load_string($xml_string);
 $func = $doc->params->func;
@@ -10,7 +11,6 @@ $sok = $doc->params->sok;
 $elid = $doc->params->elid;
 $user = $doc["user"];
 $level = $doc["level"];
-
 function check_owner($user, $elid) {
     if ($user != "root") {
         exec('/usr/local/ispmgr/sbin/mgrctl wwwdomain.edit elid=' . $elid . '|grep owner=', $exec_data);
@@ -22,7 +22,6 @@ function check_owner($user, $elid) {
     } else
         return true;
 }
-
 switch ($func) {
     case "aibolit.list";
         break;
@@ -83,7 +82,7 @@ switch ($func) {
                     continue;
                 }
             }
-            $task = "php " . PLUGIN_PATH . "ai-bolit.php --path=\"" . $user_path . "\"  --report=\"" . PLUGIN_PATH . $elid . ".html\" --skip=\"jpg,png,gif,jpeg,bmp,xml,pdf,doc,docx,xls,xlsx,ppt,pptx,css,psd,tar,gz,zip,rar,mp3\"\n";
+            $task = "php " . PLUGIN_PATH . "ai-bolit.php --path=\"" . $user_path . "\"  --report=\"" . PLUGIN_PATH . $elid . ".html\" --skip=\"".AIBOLIT_EXCLUDE."\"\n";
             $task.="/usr/local/ispmgr/sbin/mgrctl banner.new elid=aialert status=2 infotype=func info=aibolit.result  su=" . $user;
             file_put_contents(PLUGIN_PATH . $elid . '.lock', $task);
             exec("/usr/local/ispmgr/sbin/mgrctl banner.new elid=aiprogress status=3 param=" . $elid . " su=" . $user);

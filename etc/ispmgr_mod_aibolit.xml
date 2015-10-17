@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
  Title: AiBolit plugin.
- Version: 1.3.9 (16/oct/2015)
+ Version: 1.3.10 (17/oct/2015)
  Author: Denis.
  License: GPL.
  Site: http://prokaryotes.ru
 -->
 <mgrdata>
-    <plugin name="aibolit" version="1.3.9">
+    <plugin name="aibolit" version="1.3.10">
         <name lang="en">AIBolit</name>
         <description lang="en">AI-Bolit - Free Server-Side Malware Scanner</description>
-        <version>1.3.9</version>
+        <version>1.3.10</version>
         <author name="Denis Vorobev / Web-Shop-Hosting" contacts="i@prokaryotes.ru">Denis Vorobev / Web-Shop-Hosting</author>
         <contact>i@prokaryotes.ru</contact>
         <url>http://prokaryotes.ru/plugins/aibloit.tar.gz</url>
@@ -41,9 +41,9 @@
             </field>
         </form>
     </metadata>
-    <metadata name="aibolit.result" type="list" key="site">
+    <metadata name="aibolit.result" type="list" key="site" selficon="aibolit">
         <toolbar>
-            <toolbtn func="aibolit.stat" type="edit" img="t-aibolit" name="aistat"/>
+            <toolbtn func="aibolit.stat" type="edit" img="t-editlist" name="aistat"/>
             <toolbtn func="aibolit.delete" type="group" img="t-delete" name="delete"/>
         </toolbar>
         <coldata>
@@ -64,8 +64,8 @@
         <messages name="aibolit.result">
             <msg name="title">Сканер AI-Bolit</msg>
             <msg name="aistat">Статистика</msg>
-            <msg name="hint_aistat">Статистика</msg>
-            <msg name="short_aistat">Статистика</msg>
+            <msg name="hint_aistat">Детальный отчет антивируса</msg>
+            <msg name="short_aistat">Отчет</msg>
             <msg name="menu_stat">Статистика</msg>
             <msg name="title_new">Сканер AI-Bolit</msg>
             <msg name="hint_default">Сканер AI-Bolit</msg>
