@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- Title: AiBolit plugin.
- Version: 1.3.10 (17/oct/2015)
- Author: Denis.
- License: GPL.
- Site: http://prokaryotes.ru
--->
 <mgrdata>
-    <plugin name="aibolit" version="1.3.10">
-        <name lang="en">AIBolit</name>
-        <description lang="en">AI-Bolit - Free Server-Side Malware Scanner</description>
-        <version>1.3.10</version>
-        <author name="Denis Vorobev / Web-Shop-Hosting" contacts="i@prokaryotes.ru">Denis Vorobev / Web-Shop-Hosting</author>
-        <contact>i@prokaryotes.ru</contact>
-        <url>http://prokaryotes.ru/plugins/aibloit.tar.gz</url>
+    <plugin name="aibolit" version="1.3.11">
+        <name lang="en">AI-BOLIT</name>
+        <name lang="ru">AI-BOLIT</name>
+        <description lang="en">AI-BOLIT - Server-Side Malware Scanner. Detects any type of malicious software and hacker's scripts, including backdoors, phishing pages, doorways, etc. Webpage: https://revisium.com/aibo/</description>
+        <description lang="ru">Сканер вредоносного кода AI-BOLIT. Поиск любых типов вредоносных и хакерских скриптов в файлах: вирусы, хакерские веб-шеллы, бэкдоры, фишинговые страницы, дорвеи и пр. Официальная страница https://revisium.com/ai/ Страница плагина https://revisium.com/ai_isp/</description>
+        <version>1.3.11</version>
+        <author name="Revisium.com" contacts="ai@revisium.com">Official Website: https://revisium.com/ai_isp/</author>
+        <contact>ai@revisium.com</contact>
+        <url>http://prokaryotes.ru/aibolit.tar.gz</url>
         <lang>php</lang>
-        <langver strict="yes">5.3</langver> 
+        <langver strict="no">5.2</langver> 
+        <mgrver>ISPmanager-Lite</mgrver>
+        <mgrver>ISPmanager-Pro</mgrver>
+        <site>https://revisium.com/ai_isp/</site>
         <manager>ispmgr</manager>
     </plugin>
     <handler name="aibolit.php" type="xml">
@@ -37,13 +35,13 @@
     <metadata name="aibolit.stat" type="form">
         <form maxwidth="yes" nocancel="yes">
             <field name="aibolit_stat" fullwidth="yes">
-                <htmldata name="aibolit_stat" height="500"/>
+                <htmldata name="aibolit_stat" height="400"/>
             </field>
         </form>
     </metadata>
     <metadata name="aibolit.result" type="list" key="site" selficon="aibolit">
         <toolbar>
-            <toolbtn func="aibolit.stat" type="edit" img="t-editlist" name="aistat"/>
+            <toolbtn func="aibolit.stat" default="yes" type="edit" img="t-editlist" name="aistat"/>
             <toolbtn func="aibolit.delete" type="group" img="t-delete" name="delete"/>
         </toolbar>
         <coldata>
@@ -56,19 +54,19 @@
             <toolbtn func="aibolit.run" type="editlist" img="t-aibolit" name="aibolit"/>
         </toolbar>
     </metadata>
-    <lang name="en">
+    <lang name="ru">
         <messages name="alert">
             <msg name="aialert">Доступен новый отчет от антивируса. Нажмите "Подробнее" для просмотра.</msg>
             <msg name="aiprogress">Запущена проверка сайта __param__.</msg>
         </messages>
         <messages name="aibolit.result">
-            <msg name="title">Сканер AI-Bolit</msg>
+            <msg name="title">Сканер AI-BOLIT</msg>
             <msg name="aistat">Статистика</msg>
             <msg name="hint_aistat">Детальный отчет антивируса</msg>
             <msg name="short_aistat">Отчет</msg>
             <msg name="menu_stat">Статистика</msg>
-            <msg name="title_new">Сканер AI-Bolit</msg>
-            <msg name="hint_default">Сканер AI-Bolit</msg>
+            <msg name="title_new">Сканер AI-BOLIT</msg>
+            <msg name="hint_default">Сканер AI-BOLIT</msg>
             <msg name="msg_aibolit_delete">Очистить статистику</msg>
             <msg name="site">Сайт</msg>
             <msg name="data">Дата последней проверки</msg>
@@ -79,9 +77,9 @@
             <msg name="menu_aibolit.result" level = "6 7">Антивирус</msg>
         </messages>
         <messages name="wwwdomain">
-            <msg name="menu_aibolit">Aibolit</msg>
+            <msg name="menu_aibolit">AI-BOLIT</msg>
             <msg name="hint_aibolit">Detect virus code, malicious code and scripts, hacking tools, backdoors / web-shell scripts and use advanced heuristics in docroot directory</msg>
-            <msg name="short_aibolit">AI-Bolit</msg>
+            <msg name="short_aibolit">AI-BOLIT</msg>
         </messages>
     </lang>
 </mgrdata>

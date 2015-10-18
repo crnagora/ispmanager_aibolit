@@ -11,6 +11,7 @@ $sok = $doc->params->sok;
 $elid = $doc->params->elid;
 $user = $doc["user"];
 $level = $doc["level"];
+
 function check_owner($user, $elid) {
     if ($user != "root") {
         exec('/usr/local/ispmgr/sbin/mgrctl wwwdomain.edit elid=' . $elid . '|grep owner=', $exec_data);
@@ -22,6 +23,7 @@ function check_owner($user, $elid) {
     } else
         return true;
 }
+
 switch ($func) {
     case "aibolit.list";
         break;
@@ -32,7 +34,7 @@ switch ($func) {
                 break;
             unlink(PLUGIN_PATH . trim($row) . ".html");
         }
-        $doc->addChild("redirect", "alert('Статистика удалена, вы можете запустить новую проверку'); setTimeout(\"document.location='/ispmgr?func=wwwdomain'\", 100);");
+        $doc->addChild("redirect", "alert('Статистика удалена, вы можете запустить новую проверку'); setTimeout(\"document.location='?func=wwwdomain'\", 100);");
         break;
     case "aibolit.result";
         if ($user == "root")
@@ -67,12 +69,12 @@ switch ($func) {
     case "aibolit.run";
         $result = is_file(PLUGIN_PATH . $elid . ".html");
         if ($result) {
-            $doc->addChild("redirect", "alert('Антивирусная проверка завершена, вы можете просмотреть результат в статистике Антивируса, для перегенерации отчета удалите его в статистике'); setTimeout(\"document.location='/ispmgr?func=wwwdomain'\", 100);");
+            $doc->addChild("redirect", "alert('Антивирусная проверка завершена, вы можете просмотреть результат в статистике Антивируса, для перегенерации отчета удалите его в статистике'); setTimeout(\"document.location='?func=wwwdomain'\", 100);");
             break;
         }
         $chk_file = is_file(PLUGIN_PATH . $elid . '.lock');
         if ($chk_file) {
-            $doc->addChild("redirect", "alert('Процесс антивирусной проверки запущен, после окончания отчет будет доступен на странице статистики Антивируса'); setTimeout(\"document.location='/ispmgr?func=wwwdomain'\", 100);");
+            $doc->addChild("redirect", "alert('Процесс антивирусной проверки запущен, после окончания отчет будет доступен на странице статистики Антивируса'); setTimeout(\"document.location='?func=wwwdomain'\", 100);");
         } else {
             exec('/usr/local/ispmgr/sbin/mgrctl wwwdomain.edit elid=' . $elid, $exec_data);
             foreach ($exec_data AS $row) {
@@ -82,11 +84,11 @@ switch ($func) {
                     continue;
                 }
             }
-            $task = "php " . PLUGIN_PATH . "ai-bolit.php --path=\"" . $user_path . "\"  --report=\"" . PLUGIN_PATH . $elid . ".html\" --skip=\"".AIBOLIT_EXCLUDE."\"\n";
+            $task = "php " . PLUGIN_PATH . "ai-bolit.php --path=\"" . $user_path . "\"  --report=\"" . PLUGIN_PATH . $elid . ".html\" --skip=\"" . AIBOLIT_EXCLUDE . "\"\n";
             $task.="/usr/local/ispmgr/sbin/mgrctl banner.new elid=aialert status=2 infotype=func info=aibolit.result  su=" . $user;
             file_put_contents(PLUGIN_PATH . $elid . '.lock', $task);
             exec("/usr/local/ispmgr/sbin/mgrctl banner.new elid=aiprogress status=3 param=" . $elid . " su=" . $user);
-            $doc->addChild("redirect", "alert('Антивирусная проверка запущена, результаты будут доступны после окончательной проверки'); setTimeout(\"document.location='/ispmgr?func=wwwdomain'\", 100);");
+            $doc->addChild("redirect", "alert('Антивирусная проверка запущена, результаты будут доступны после окончательной проверки'); setTimeout(\"document.location='?func=wwwdomain'\", 100);");
         }
         break;
     default;

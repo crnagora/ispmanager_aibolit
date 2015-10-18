@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mgrdata>
+    <plugin name="aibolit" version="1.3.11">
+        <name lang="en">AI-BOLIT</name>
+        <name lang="ru">AI-BOLIT</name>
+        <description lang="en">AI-BOLIT - Server-Side Malware Scanner. Detects any type of malicious software and hacker's scripts, including backdoors, phishing pages, doorways, etc. Webpage: https://revisium.com/aibo/</description>
+        <description lang="ru">Сканер вредоносного кода AI-BOLIT. Поиск любых типов вредоносных и хакерских скриптов в файлах: вирусы, хакерские веб-шеллы, бэкдоры, фишинговые страницы, дорвеи и пр. Официальная страница https://revisium.com/ai/ Страница плагина https://revisium.com/ai_isp/</description>
+        <version>1.3.11</version>
+        <author name="Revisium.com" contacts="ai@revisium.com">Official Website: https://revisium.com/ai_isp/</author>
+        <contact>ai@revisium.com</contact>
+        <url>http://prokaryotes.ru/aibolit.tar.gz</url>
+        <lang>php</lang>
+        <langver strict="no">5.2</langver> 
+        <mgrver>ISPmanager-Lite</mgrver>
+        <mgrver>ISPmanager-Pro</mgrver>
+        <site>https://revisium.com/ai_isp/</site>
+        <manager>ispmgr</manager>
+    </plugin>
+</mgrdata>
