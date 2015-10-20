@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo "* * * * * root /usr/local/ispmgr/addon/aibolit.task.sh" > /etc/cron.d/aibolit
+echo "* * * * * root /usr/local/ispmgr/addon/aibolit.task.sh  >/dev/null 2>&1" > /etc/cron.d/aibolit
 echo >> /etc/cron.d/aibolit

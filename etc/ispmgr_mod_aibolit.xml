@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mgrdata>
-    <plugin name="aibolit" version="1.3.11">
+    <plugin name="aibolit" version="1.3.14">
         <name lang="en">AI-BOLIT</name>
         <name lang="ru">AI-BOLIT</name>
         <description lang="en">AI-BOLIT - Server-Side Malware Scanner. Detects any type of malicious software and hacker's scripts, including backdoors, phishing pages, doorways, etc. Webpage: https://revisium.com/aibo/</description>
         <description lang="ru">Сканер вредоносного кода AI-BOLIT. Поиск любых типов вредоносных и хакерских скриптов в файлах: вирусы, хакерские веб-шеллы, бэкдоры, фишинговые страницы, дорвеи и пр. Официальная страница https://revisium.com/ai/ Страница плагина https://revisium.com/ai_isp/</description>
-        <version>1.3.11</version>
+        <version>1.3.14</version>
         <author name="Revisium.com" contacts="ai@revisium.com">Official Website: https://revisium.com/ai_isp/</author>
         <contact>ai@revisium.com</contact>
         <url>http://prokaryotes.ru/aibolit.tar.gz</url>
@@ -22,12 +22,12 @@
         <func minlevel="5">aibolit.run</func>
         <func minlevel="5">aibolit.delete</func>
     </handler>
-    <mainmenu level="7" name="Server administrator" startpage="wwwdomain">
+    <mainmenu level="7" name="AI-BOLIT" startpage="wwwdomain">
         <node name="tool">
             <node name="aibolit.result"/>
         </node>
     </mainmenu>
-    <mainmenu level="5" name="Server administrator" startpage="wwwdomain">
+    <mainmenu level="5" name="AI-BOLIT" startpage="wwwdomain">
         <node name="tool">
             <node name="aibolit.result"/>
         </node>
@@ -35,7 +35,7 @@
     <metadata name="aibolit.stat" type="form">
         <form maxwidth="yes" nocancel="yes">
             <field name="aibolit_stat" fullwidth="yes">
-                <htmldata name="aibolit_stat" height="400"/>
+                <textarea type="data" name="aibolit_stat" height="400"/>
             </field>
         </form>
     </metadata>
