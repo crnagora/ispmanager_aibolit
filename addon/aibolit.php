@@ -56,7 +56,6 @@ switch ($func) {
         }
         break;
     case "aibolit.stat";
-        //закрываем окно по кнопке
         if ($sok == "ok") {
             $doc->addChild("ok", "ok");
             break;
@@ -84,7 +83,8 @@ switch ($func) {
                     continue;
                 }
             }
-            $task = "php " . PLUGIN_PATH . "ai-bolit.php --path=\"" . $user_path . "\"  --report=\"" . PLUGIN_PATH . $elid . ".html\" --skip=\"" . AIBOLIT_EXCLUDE . "\"\n";
+            $task = "php " . PLUGIN_PATH . "ai-bolit.php --path=\"" . $user_path . "\"  --list=\"" . PLUGIN_PATH . $elid . ".html\" --report=\"" . PLUGIN_PATH . $elid . ".tmp\" --skip=\"" . AIBOLIT_EXCLUDE . "\"\n";
+            $task.="rm -r \"" . PLUGIN_PATH . $elid . ".tmp\"\n";
             $task.="/usr/local/ispmgr/sbin/mgrctl banner.new elid=aialert status=2 infotype=func info=aibolit.result  su=" . $user;
             file_put_contents(PLUGIN_PATH . $elid . '.lock', $task);
             exec("/usr/local/ispmgr/sbin/mgrctl banner.new elid=aiprogress status=3 param=" . $elid . " su=" . $user);
